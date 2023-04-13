@@ -18,3 +18,5 @@ steps:
       - gcr.io/khaja-dv/my-flask-app:$COMMIT_SHA
       - --service
       - $_APP_ENGINE_SERVICE_NAME
+options:
+  logging: CLOUD_LOGGING_ONLY
