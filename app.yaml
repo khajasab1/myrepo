@@ -1,5 +1,16 @@
-runtime: python37
+runtime: custom
+env: flex
 
-handlers:
-- url: /.*
-  script: auto
+# Update the entry point to your app
+entrypoint: gunicorn -b :$PORT main:app
+
+# Specify the packages to install
+runtime_config:
+  python_version: 3.7
+  requirements_path: requirements.txt
+
+# Configure resources for your app
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
