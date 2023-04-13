@@ -1,3 +1,5 @@
-runtime: python39
-entrypoint: gunicorn --bind 0.0.0.0:5000 app:app
+runtime: python37
 
+handlers:
+- url: /.*
+  script: auto
