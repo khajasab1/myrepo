@@ -1,0 +1,29 @@
+trigger:
+  branch: master
+  tags:
+    - v*
+substitutions:
+  _APP_ENGINE_SERVICE_NAME: my-flask-app
+  _IMAGE_NAME: my-flask-app
+  _IMAGE_TAG: $COMMIT_SHA
+  _PROJECT_ID: khaja-dv
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - build
+      - -t
+      - gcr.io/$_PROJECT_ID/$_IMAGE_NAME:$_IMAGE_TAG
+      - .
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - push
+      - gcr.io/$_PROJECT_ID/$_IMAGE_NAME:$_IMAGE_TAG
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - app
+      - deploy
+      - --quiet
+      - --image-url
+      - gcr.io/$_PROJECT_ID/$_IMAGE_NAME:$_IMAGE_TAG
+      - --service
+      - $_APP_ENGINE_SERVICE_NAME
