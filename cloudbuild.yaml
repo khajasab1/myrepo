@@ -1,7 +1,3 @@
-trigger:
-  branch: master
-  tags:
-    - v*
 substitutions:
   _APP_ENGINE_SERVICE_NAME: my-flask-app
   _IMAGE_NAME: my-flask-app
