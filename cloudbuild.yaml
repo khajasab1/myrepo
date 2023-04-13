@@ -1,5 +1,5 @@
 substitutions:
-  _APP_ENGINE_SERVICE_NAME: my-flask-app
+  # _APP_ENGINE_SERVICE_NAME: my-flask-app
   _IMAGE_NAME: my-flask-app
   _IMAGE_TAG: $COMMIT_SHA
   _PROJECT_ID: khaja-dv
