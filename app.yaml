@@ -1,0 +1,23 @@
+runtime: custom
+env: flex
+
+# Use the URL of the Docker image you pushed earlier
+# Replace [PROJECT-ID] with your project ID
+# Replace [IMAGE-NAME] with the name of your Docker image
+# This example assumes your app is listening on port 8080
+# Adjust this value if your app listens on a different port
+# Set any environment variables your app requires
+# The 'env_variables' block is optional
+# Remove it if your app does not require any environment variables
+
+service: my-flask-app
+runtime_config:
+  python_version: 3.9
+
+env_variables:
+  MY_ENV_VAR: 'my-value'
+
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
